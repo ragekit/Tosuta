@@ -16,14 +16,14 @@ let frameBuffer = ctx.createImageData(WIDTH, HEIGHT);
 
 let data = frameBuffer.data;
 
-let image = document.getElementsByTagName('img')[0];
-var textureCanvas = document.createElement('canvas');
-textureCanvas.width = 256;
-textureCanvas.height = 256
-// Get the drawing context
-var textureContext = textureCanvas.getContext('2d');
-textureContext.drawImage(image, 0, 0);
-var texture = textureContext.getImageData(0, 0, 256, 256);
+// let image = document.getElementsByTagName('img')[0];
+// var textureCanvas = document.createElement('canvas');
+// textureCanvas.width = 256;
+// textureCanvas.height = 256
+// // Get the drawing context
+// var textureContext = textureCanvas.getContext('2d');
+// textureContext.drawImage(image, 0, 0);
+// var texture = textureContext.getImageData(0, 0, 256, 256);
 
 
 function SetPixel(index, r, g, b, a) {
@@ -305,7 +305,7 @@ function ParseObjString(string) {
   }
 }
 
-ParseObjString(objectModel);
+fetch("./model.obj").then((response) => response.text()).then((text)=> {ParseObjString(text)});
 var previousTime = 0;
 var lastFrameTested = 0;
 var fps =0;
