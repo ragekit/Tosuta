@@ -2,8 +2,8 @@ import point from "./Point.js"
 import TransformMatrix from "./TransformMatrix.js"
 
 let screen = document.getElementsByTagName("canvas")[0];
-const WIDTH = 640;
-const HEIGHT = 480;
+const WIDTH = window.innerWidth;
+const HEIGHT = window.innerHeight;
 screen.width = WIDTH;
 screen.height = HEIGHT;
 let ctx = screen.getContext("2d");
@@ -122,7 +122,7 @@ function update(t) {
   
   for (var x = 0; x < WIDTH; x++) {
     for (var y = 0; y < HEIGHT; y++) {
-      if((t+y)%2)
+  //    if((t+y)%2)
       SetPixelXY(x,y,0,0,0,255);
     }
   }
@@ -139,7 +139,7 @@ function update(t) {
     var worldPointB = TransformMatrix.mult(ObjectMatrix, t2);
     var worldPointC = TransformMatrix.mult(ObjectMatrix, t3);
 
-    var precision = 30;
+    var precision = 60;
     worldPointA.ReducePrecision(precision);
     worldPointB.ReducePrecision(precision);
     worldPointC.ReducePrecision(precision);
@@ -180,7 +180,7 @@ function update(t) {
     for (var x = xmin; x <= xmax; x++) {
       for (var y = ymin; y <= ymax; y++) {
 
-        if ((t+y)%2 == 0) continue
+     //   if ((t+y)%2 == 0) continue
 
         var currentfragment = new point(x, y, 0);
 
